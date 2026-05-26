@@ -1,0 +1,193 @@
+            ; DATA XREF from entry0 @ 0x403118
+┌ 632: int main (int argc, char **argv, int64_t envp, int64_t arg_40018h);
+│           ; var int64_t var_8h @ rsp+0x8
+│           ; arg int64_t envp @ rsp+0x1c
+│           ; arg int64_t arg_40018h @ rsp+0x40018
+│           ; arg int argc @ rdi
+│           ; arg char **argv @ rsi
+│           0x00402e29      55             push rbp
+│           0x00402e2a      89fa           mov edx, edi                ; argc
+│           0x00402e2c      b9ffff0000     mov ecx, 0xffff
+│           0x00402e31      0f57c0         xorps xmm0, xmm0
+│           0x00402e34      53             push rbx
+│           0x00402e35      4881ec280004.  sub rsp, 0x40028
+│           0x00402e3c      64488b042528.  mov rax, qword fs:[0x28]
+│           0x00402e45      488984241800.  mov qword [arg_40018h], rax
+│           0x00402e4d      31c0           xor eax, eax
+│           0x00402e4f      488d7c241c     lea rdi, [envp]
+│           0x00402e54      0f11442408     movups xmmword [var_8h], xmm0
+│           0x00402e59      f3ab           rep stosd dword [rdi], eax
+│           0x00402e5b      83fa02         cmp edx, 2                  ; loc._nl_current_LC_CTYPE_used
+│       ┌─< 0x00402e5e      7411           je 0x402e71
+│       │   0x00402e60      c705065c0a00.  mov dword [obj.ret], 0xffffffff ; [0x4a8a70:4]=0
+│       │   0x00402e6a      31ed           xor ebp, ebp
+│      ┌──< 0x00402e6c      e9dd010000     jmp 0x40304e
+│      ││   ; CODE XREF from main @ 0x402e5e
+│      │└─> 0x00402e71      488b4608       mov rax, qword [rsi + 8]    ; argv
+│      │    0x00402e75      31ed           xor ebp, ebp
+│      │    0x00402e77      31db           xor ebx, ebx
+│      │    0x00402e79      48890424       mov qword [rsp], rax
+│      │    ; XREFS: CODE 0x00402ebc  CODE 0x00402ec8  CODE 0x00402ecc  
+│      │    ; XREFS: CODE 0x00402ee8  CODE 0x00402eec  CODE 0x00402efc  
+│      │    ; XREFS: CODE 0x00402f14  CODE 0x00402f24  CODE 0x00402f4d  
+│      │    ; XREFS: CODE 0x00402f76  CODE 0x00402fb5  CODE 0x00402fc8  
+│      │    ; XREFS: CODE 0x00402ff0  CODE 0x00403009  CODE 0x0040303e  
+│      │    ; XREFS: CODE 0x00403049  
+│ ┌┌┌┌┌─┌─> 0x00402e7d      488b1424       mov rdx, qword [rsp]
+│ ╎╎╎╎╎│╎   0x00402e81      8a02           mov al, byte [rdx]
+│ ╎╎╎╎╎│╎   0x00402e83      84c0           test al, al
+│ ────────< 0x00402e85      0f84c3010000   je 0x40304e
+│ ╎╎╎╎╎│╎   0x00402e8b      833dde5b0a00.  cmp dword [obj.ret], 0      ; [0x4a8a70:4]=0
+│ ────────< 0x00402e92      0f85b6010000   jne 0x40304e
+│ ╎╎╎╎╎│╎   0x00402e98      488d7201       lea rsi, [rdx + 1]
+│ ╎╎╎╎╎│╎   0x00402e9c      48893424       mov qword [rsp], rsi
+│ ╎╎╎╎╎│╎   0x00402ea0      3c40           cmp al, 0x40                ; elf_phdr
+│ ────────< 0x00402ea2      745d           je 0x402f01
+│ ────────< 0x00402ea4      7f28           jg 0x402ece
+│ ╎╎╎╎╎│╎   0x00402ea6      3c2d           cmp al, 0x2d                ; 45
+│ ────────< 0x00402ea8      0f84a4000000   je 0x402f52
+│ ────────< 0x00402eae      7f0e           jg 0x402ebe
+│ ╎╎╎╎╎│╎   0x00402eb0      3c25           cmp al, 0x25                ; 37
+│ ────────< 0x00402eb2      0f8456010000   je 0x40300e
+│ ╎╎╎╎╎│╎   0x00402eb8      3c2b           cmp al, 0x2b                ; 43
+│ ────────< 0x00402eba      746d           je 0x402f29
+│ ────────< 0x00402ebc      ebbf           jmp 0x402e7d
+│ ╎╎╎╎╎│╎   ; CODE XREF from main @ 0x402eae
+│ ────────> 0x00402ebe      3c3c           cmp al, 0x3c                ; 60
+│ ────────< 0x00402ec0      0f847d010000   je 0x403043
+│ ╎╎╎╎╎│╎   0x00402ec6      3c3e           cmp al, 0x3e                ; 62
+│ ────────< 0x00402ec8      75b3           jne 0x402e7d
+│ ╎╎╎╎╎│╎   0x00402eca      ffc3           inc ebx
+│ ────────< 0x00402ecc      ebaf           jmp 0x402e7d
+│ ╎╎╎╎╎│╎   ; CODE XREF from main @ 0x402ea4
+│ ────────> 0x00402ece      3c5e           cmp al, 0x5e                ; 94
+│ ────────< 0x00402ed0      0f84a5000000   je 0x402f7b
+│ ────────< 0x00402ed6      7f12           jg 0x402eea
+│ ╎╎╎╎╎│╎   0x00402ed8      3c5b           cmp al, 0x5b                ; 91
+│ ────────< 0x00402eda      0f84ed000000   je 0x402fcd
+│ ╎╎╎╎╎│╎   0x00402ee0      3c5d           cmp al, 0x5d                ; 93
+│ ────────< 0x00402ee2      0f84f6000000   je 0x402fde
+│ ────────< 0x00402ee8      eb93           jmp 0x402e7d
+│ ╎╎╎╎╎│╎   ; CODE XREF from main @ 0x402ed6
+│ ────────> 0x00402eea      3c76           cmp al, 0x76                ; 118
+│ ────────< 0x00402eec      758f           jne 0x402e7d
+│ ╎╎╎╎╎│╎   0x00402eee      e86a040000     call sym.h8
+│ ╎╎╎╎╎│╎   0x00402ef3      89c2           mov edx, eax
+│ ╎╎╎╎╎│╎   0x00402ef5      4863c3         movsxd rax, ebx
+│ ╎╎╎╎╎│╎   0x00402ef8      8954841c       mov dword [rsp + rax*4 + 0x1c], edx
+│ ────────< 0x00402efc      e97cffffff     jmp 0x402e7d
+│ ╎╎╎╎╎│╎   ; CODE XREF from main @ 0x402ea2
+│ ────────> 0x00402f01      4889e7         mov rdi, rsp                ; int64_t arg1
+│ ╎╎╎╎╎│╎   0x00402f04      e81e040000     call sym.i4
+│ ╎╎╎╎╎│╎   0x00402f09      4889c1         mov rcx, rax
+│ ╎╎╎╎╎│╎   0x00402f0c      48c1e920       shr rcx, 0x20
+│ ╎╎╎╎╎│╎   0x00402f10      89cb           mov ebx, ecx
+│ ╎╎╎╎╎│╎   0x00402f12      84c0           test al, al
+│ ────────< 0x00402f14      0f8463ffffff   je 0x402e7d
+│ ╎╎╎╎╎│╎   0x00402f1a      c7054c5b0a00.  mov dword [obj.ret], 0xffffffff ; [0x4a8a70:4]=0
+│ ────────< 0x00402f24      e954ffffff     jmp 0x402e7d
+│ ╎╎╎╎╎│╎   ; CODE XREF from main @ 0x402eba
+│ ────────> 0x00402f29      4889e7         mov rdi, rsp                ; int64_t arg1
+│ ╎╎╎╎╎│╎   0x00402f2c      e8f6030000     call sym.i4
+│ ╎╎╎╎╎│╎   0x00402f31      4889c2         mov rdx, rax
+│ ╎╎╎╎╎│╎   0x00402f34      48c1fa20       sar rdx, 0x20
+│ ╎╎╎╎╎│╎   0x00402f38      84c0           test al, al
+│ ────────< 0x00402f3a      740a           je 0x402f46
+│ ╎╎╎╎╎│╎   0x00402f3c      c7052a5b0a00.  mov dword [obj.ret], 0xffffffff ; [0x4a8a70:4]=0
+│ ╎╎╎╎╎│╎   ; CODE XREF from main @ 0x402f3a
+│ ────────> 0x00402f46      4863c3         movsxd rax, ebx
+│ ╎╎╎╎╎│╎   0x00402f49      0154841c       add dword [rsp + rax*4 + 0x1c], edx
+│ ────────< 0x00402f4d      e92bffffff     jmp 0x402e7d
+│ ╎╎╎╎╎│╎   ; CODE XREF from main @ 0x402ea8
+│ ────────> 0x00402f52      4889e7         mov rdi, rsp                ; int64_t arg1
+│ ╎╎╎╎╎│╎   0x00402f55      e8cd030000     call sym.i4
+│ ╎╎╎╎╎│╎   0x00402f5a      4889c2         mov rdx, rax
+│ ╎╎╎╎╎│╎   0x00402f5d      48c1fa20       sar rdx, 0x20
+│ ╎╎╎╎╎│╎   0x00402f61      84c0           test al, al
+│ ────────< 0x00402f63      740a           je 0x402f6f
+│ ╎╎╎╎╎│╎   0x00402f65      c705015b0a00.  mov dword [obj.ret], 0xffffffff ; [0x4a8a70:4]=0
+│ ╎╎╎╎╎│╎   ; CODE XREF from main @ 0x402f63
+│ ────────> 0x00402f6f      4863c3         movsxd rax, ebx
+│ ╎╎╎╎╎│╎   0x00402f72      2954841c       sub dword [rsp + rax*4 + 0x1c], edx
+│ ────────< 0x00402f76      e902ffffff     jmp 0x402e7d
+│ ╎╎╎╎╎│╎   ; CODE XREF from main @ 0x402ed0
+│ ────────> 0x00402f7b      0fbe7a01       movsx edi, byte [rdx + 1]   ; int64_t arg1
+│ ╎╎╎╎╎│╎   0x00402f7f      488d4202       lea rax, [rdx + 2]
+│ ╎╎╎╎╎│╎   0x00402f83      48890424       mov qword [rsp], rax
+│ ╎╎╎╎╎│╎   0x00402f87      e829030000     call sym.hx
+│ ╎╎╎╎╎│╎   0x00402f8c      4889c2         mov rdx, rax
+│ ╎╎╎╎╎│╎   0x00402f8f      48c1fa20       sar rdx, 0x20
+│ ╎╎╎╎╎│╎   0x00402f93      84c0           test al, al
+│ ────────< 0x00402f95      740a           je 0x402fa1
+│ ╎╎╎╎╎│╎   0x00402f97      c705cf5a0a00.  mov dword [obj.ret], 0xffffffff ; [0x4a8a70:4]=0
+│ ────────> 0x00402fa1      4863c3         movsxd rax, ebx
+│ ╎╎╎╎╎│╎   0x00402fa4      8b74841c       mov esi, dword [rsp + rax*4 + 0x1c]
+│ ╎╎╎╎╎│╎   0x00402fa8      85d2           test edx, edx
+│ ────────< 0x00402faa      750e           jne 0x402fba
+│ ╎╎╎╎╎│╎   0x00402fac      400fbefe       movsx edi, sil              ; int c
+│ ╎╎╎╎╎│╎   0x00402fb0      e8eb9a0000     call sym.putchar            ; int putchar(int c)
+│ └───────< 0x00402fb5      e9c3feffff     jmp 0x402e7d
+│  ╎╎╎╎│╎   ; CODE XREF from main @ 0x402faa
+│ ────────> 0x00402fba      488d3d03a407.  lea rdi, [0x0047d3c4]       ; "%d" ; int64_t arg1
+│  ╎╎╎╎│╎   0x00402fc1      31c0           xor eax, eax
+│  ╎╎╎╎│╎   0x00402fc3      e888360000     call sym.__printf
+│  └──────< 0x00402fc8      e9b0feffff     jmp 0x402e7d
+│   ╎╎╎│╎   ; CODE XREF from main @ 0x402eda
+│ ────────> 0x00402fcd      488d7c2408     lea rdi, [var_8h]           ; int64_t arg1
+│   ╎╎╎│╎   0x00402fd2      48896c2408     mov qword [var_8h], rbp
+│   ╎╎╎│╎   0x00402fd7      e867020000     call sym.ph
+│  ┌──────< 0x00402fdc      eb26           jmp 0x403004
+│  │╎╎╎│╎   ; CODE XREF from main @ 0x402ee2
+│ ────────> 0x00402fde      4863c3         movsxd rax, ebx
+│  │╎╎╎│╎   0x00402fe1      837c841c00     cmp dword [rsp + rax*4 + 0x1c], 0
+│ ┌───────< 0x00402fe6      740d           je 0x402ff5
+│ ││╎╎╎│╎   0x00402fe8      488b4500       mov rax, qword [rbp]
+│ ││╎╎╎│╎   0x00402fec      48890424       mov qword [rsp], rax
+│ ││└─────< 0x00402ff0      e988feffff     jmp 0x402e7d
+│ ││ ╎╎│╎   ; CODE XREF from main @ 0x402fe6
+│ └───────> 0x00402ff5      488d7c2408     lea rdi, [var_8h]           ; int64_t arg1
+│  │ ╎╎│╎   0x00402ffa      48896c2408     mov qword [var_8h], rbp
+│  │ ╎╎│╎   0x00402fff      e874020000     call sym.pp
+│  │ ╎╎│╎   ; CODE XREF from main @ 0x402fdc
+│  └──────> 0x00403004      488b6c2408     mov rbp, qword [var_8h]
+│    └────< 0x00403009      e96ffeffff     jmp 0x402e7d
+│     ╎│╎   ; CODE XREF from main @ 0x402eb2
+│ ────────> 0x0040300e      4889e7         mov rdi, rsp                ; int64_t arg1
+│     ╎│╎   0x00403011      e811030000     call sym.i4
+│     ╎│╎   0x00403016      4889c2         mov rdx, rax
+│     ╎│╎   0x00403019      48c1fa20       sar rdx, 0x20
+│     ╎│╎   0x0040301d      4889d6         mov rsi, rdx
+│     ╎│╎   0x00403020      84c0           test al, al
+│    ┌────< 0x00403022      740a           je 0x40302e
+│    │╎│╎   0x00403024      c705425a0a00.  mov dword [obj.ret], 0xffffffff ; [0x4a8a70:4]=0
+│    │╎│╎   ; CODE XREF from main @ 0x403022
+│    └────> 0x0040302e      4863cb         movsxd rcx, ebx
+│     ╎│╎   0x00403031      8b448c1c       mov eax, dword [rsp + rcx*4 + 0x1c]
+│     ╎│╎   0x00403035      99             cdq
+│     ╎│╎   0x00403036      f77cb41c       idiv dword [rsp + rsi*4 + 0x1c]
+│     ╎│╎   0x0040303a      89548c1c       mov dword [rsp + rcx*4 + 0x1c], edx
+│     └───< 0x0040303e      e93afeffff     jmp 0x402e7d
+│      │╎   ; CODE XREF from main @ 0x402ec0
+│ ────────> 0x00403043      83fb01         cmp ebx, 1                  ; 1
+│      │╎   0x00403046      83d3ff         adc ebx, 0xffffffff
+│      │└─< 0x00403049      e92ffeffff     jmp 0x402e7d
+│      │    ; CODE XREFS from main @ 0x402e6c, 0x402e85, 0x402e92
+│ ─────└──> 0x0040304e      488d7c2408     lea rdi, [var_8h]           ; int64_t arg1
+│           0x00403053      48896c2408     mov qword [var_8h], rbp
+│           0x00403058      e842020000     call sym.fs
+│           0x0040305d      833d0c5a0a00.  cmp dword [obj.ret], 0      ; [0x4a8a70:4]=0
+│           0x00403064      488d3dad9f07.  lea rdi, str._Success_      ; 0x47d018 ; "[Success]"
+│       ┌─< 0x0040306b      7407           je 0x403074
+│       │   0x0040306d      488d3d9c9f07.  lea rdi, [0x0047d010]       ; "[Error]"
+│       │   ; CODE XREF from main @ 0x40306b
+│       └─> 0x00403074      e8f7970000     call sym.puts               ; int puts(const char *s)
+│           0x00403079      8b05f1590a00   mov eax, dword [obj.ret]    ; [0x4a8a70:4]=0
+│           0x0040307f      488b94241800.  mov rdx, qword [arg_40018h]
+│           0x00403087      64482b142528.  sub rdx, qword fs:[0x28]
+│       ┌─< 0x00403090      7405           je 0x403097
+│       │   0x00403092      e879fb0100     call sym.__stack_chk_fail_local
+│       │   ; CODE XREF from main @ 0x403090
+│       └─> 0x00403097      4881c4280004.  add rsp, 0x40028
+│           0x0040309e      5b             pop rbx
+│           0x0040309f      5d             pop rbp
+└           0x004030a0      c3             ret
